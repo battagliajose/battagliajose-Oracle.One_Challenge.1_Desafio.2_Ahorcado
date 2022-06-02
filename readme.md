@@ -31,6 +31,6 @@
     <li>Extra!: Un rodapie con los datos de la persona que desarrolló el sitio web!
 </ul>
 
-![Imagen 1](https://raw.githubusercontent.com/battagliajose/Oracle.One_Challenge.1_Desafio.2_Ahorcado/main/img/dise%C3%B1o_figma1.jpg)
-![Imagen 2](https://raw.githubusercontent.com/battagliajose/Oracle.One_Challenge.1_Desafio.2_Ahorcado/main/img/dise%C3%B1o_figma2.jpg)
-![Imagen 3](https://raw.githubusercontent.com/battagliajose/Oracle.One_Challenge.1_Desafio.2_Ahorcado/main/img/dise%C3%B1o_figma3.jpg)
+![Imagen 1](https://raw.githubusercontent.com/battagliajose/battagliajose-Oracle.One_Challenge.1_Desafio.2_Ahorcado/main/img/dise%C3%B1o_figma1.jpg)
+![Imagen 2](https://raw.githubusercontent.com/battagliajose/battagliajose-Oracle.One_Challenge.1_Desafio.2_Ahorcado/main/img/dise%C3%B1o_figma2.jpg)
+![Imagen 3](https://raw.githubusercontent.com/battagliajose/battagliajose-Oracle.One_Challenge.1_Desafio.2_Ahorcado/main/img/dise%C3%B1o_figma3.jpg)
