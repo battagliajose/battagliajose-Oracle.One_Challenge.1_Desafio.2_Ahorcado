@@ -7,6 +7,12 @@ main {
     text-align: center;
 }
 
+footer {
+    position: absolute;
+    bottom: 1vh;
+    font-size: 1.1vw;
+}
+
 .oculta {
     display: none !important;
 }
@@ -74,6 +80,21 @@ main {
 #agregarPalabraDiv {
     /*border: 2px solid black;*/
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 7vw;
+    width: 70vw;
+    height: 70vh;
+    margin: 0 15vw;
+    text-align: center;
+}
+
+/*Vista de Juego*/
+
+#juegoDiv {
+    border: 2px solid black;
+    /*display: flex;*/
     flex-direction: column;
     justify-content: center;
     position: absolute;
