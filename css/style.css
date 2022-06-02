@@ -1,0 +1,85 @@
+/*font-family: 'Inter', sans-serif;*/
+body {
+    background-color: #E5E5E5;
+}
+
+main {
+    text-align: center;
+}
+
+.oculta {
+    display: none !important;
+}
+
+#logoAlura {
+    margin: 2vw;
+    width: 1.5vw;
+}
+
+/*Vista Iniciar Juego*/
+
+#mainDiv {
+    /*border: 2px solid black;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 7vw;
+    width: 70vw;
+    height: 70vh;
+    margin: 0 15vw;
+    text-align: center;
+}
+
+.boton {
+    font-family: 'Inter', sans-serif;
+    border-radius: 1.5vw;
+    border-color: #0A3871;
+    border-width: 0.1vh;
+    transition: all 0.1s ease-out;
+    display: block;
+    margin: 1vh auto;
+    min-width: fit-content;
+    min-height: fit-content;
+}
+
+.boton:hover {
+    transform: scale(1.1);
+}
+
+.btnAzul {
+    color: white;
+    background-color: #0A3871;
+}
+
+.btnGris {
+    color: #0A3871;
+    background-color: #E5E5E5;
+}
+
+.btnGrande {
+    height: 13vh;
+    width: 20vw;
+    font-size: 1.3vw;
+}
+
+.btnChico {
+    height: 9vh;
+    width: 15vw;
+    font-size: 1.1vw;
+}
+
+/*Vista Agregar Palabra*/
+
+#agregarPalabraDiv {
+    /*border: 2px solid black;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 7vw;
+    width: 70vw;
+    height: 70vh;
+    margin: 0 15vw;
+    text-align: center;
+}
