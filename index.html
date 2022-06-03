@@ -25,14 +25,22 @@
         </div>
 
         <div id="agregarPalabraDiv" class="oculta">
-            <input type="text">
-            <button id="btnGuardarPalabra" class="boton btnAzul">Guardar y Empezar</button>
-            <button id="btnCancelarPalabra" class="boton btnGris">Cancelar</button>
+            <div class="divInputText">
+                <textarea id="txtNuevaPalabra" cols="20" rows="2" placeholder="Ingrese palabra..."></textarea>
+                <div class="flexVerticalCenter"> 
+                    <img src="img/ExclamationMark.png" class="inlineClass" alt="Atención">
+                    <p id="mensajeMax8Letras" class="inlineClass">Máx. de 8 letras.</p>
+                </div>
+            </div>
+            <div class="divDosBotonesHorizontal">
+                <button id="btnGuardarPalabra" class="boton btnAzul btnMedio">Guardar y Empezar</button>
+                <button id="btnCancelarPalabra" class="boton btnGris btnMedio">Cancelar</button>
+            </div>
         </div>
 
         <div id="juegoDiv" class="oculta">
             <canvas id="canvas"></canvas>
-            <div id="divBotonesJuego">
+            <div class="divDosBotonesHorizontal">
                 <button id="btnNuevoJuego" class="boton btnAzul btnMedio">Nuevo Juego</button>
                 <button id="btnDesistir" class="boton btnGris btnMedio">Desistir</button>
             </div>

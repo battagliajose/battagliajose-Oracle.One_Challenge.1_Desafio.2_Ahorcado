@@ -104,6 +104,14 @@ footer {
     font-size: 1.1vw;
 }
 
+.divDosBotonesHorizontal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    margin: 0 auto;
+}
+
 /*Vista Agregar Palabra*/
 
 #agregarPalabraDiv {
@@ -111,6 +119,7 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     position: absolute;
     top: 7vw;
     width: 70vw;
@@ -118,6 +127,59 @@ footer {
     margin: 0 15vw;
     text-align: center;
 }
+
+.divInputText {
+    /*border: 2px solid black;*/
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 60vh;
+    width: 40vw;
+    text-align: left;
+}
+
+#txtNuevaPalabra {
+    font-family: 'Inter', sans-serif;
+    font-size: 2.0vw;
+    color: #0A3871;
+    border: none;
+    background-color: transparent;
+    margin: 1.3vw;
+    outline: none;
+}
+
+#mensajeMax8Letras {
+    font-family: 'Inter';
+    font-size: 2vh;
+    color: #495057;
+    margin-left: 1vh;
+}
+
+.flexVerticalCenter {
+    display: flex;
+    justify-content: left;
+}
+
+.flexVerticalCenter img {
+    align-self: center;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #0A3871;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #0A3871;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #0A3871;
+  }
+
+  .inlineClass {
+      display: inline;
+  }
 
 /*Vista de Juego*/
 
@@ -134,10 +196,4 @@ footer {
     text-align: center;
 }
 
-#divBotonesJuego {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-    margin: 0 auto;
-}
+

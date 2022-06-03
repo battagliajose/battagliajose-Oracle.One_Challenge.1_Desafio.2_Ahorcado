@@ -17,6 +17,9 @@ var canvasW;
 /*Canvas responsive*/
 window.addEventListener("resize", resizeCanvas); 
 
+/*InputText Nueva Palabra*/
+var txtNuevaPalabra = document.querySelector("#txtNuevaPalabra");
+
 btnIniciarJuego.addEventListener("click", function(){
     mainDiv.classList.add("oculta");
     juegoDiv.classList.remove("oculta");
@@ -52,6 +55,8 @@ btnAgregarPalabra.addEventListener("click", function(){
 btnCancelarPalabra.addEventListener("click", function(){
     mainDiv.classList.remove("oculta");
     agregarPalabraDiv.classList.add("oculta");
+    console.log(txtNuevaPalabra.value);
+    txtNuevaPalabra.value = "";
 });
 
 btnDesistir.addEventListener("click", function(){
