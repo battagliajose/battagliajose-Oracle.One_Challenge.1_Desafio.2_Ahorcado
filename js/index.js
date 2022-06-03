@@ -20,6 +20,10 @@ window.addEventListener("resize", resizeCanvas);
 /*InputText Nueva Palabra*/
 var txtNuevaPalabra = document.querySelector("#txtNuevaPalabra");
 
+txtNuevaPalabra.addEventListener("input", function(){
+    beep();
+});
+
 btnIniciarJuego.addEventListener("click", function(){
     mainDiv.classList.add("oculta");
     juegoDiv.classList.remove("oculta");
@@ -63,3 +67,19 @@ btnDesistir.addEventListener("click", function(){
     mainDiv.classList.remove("oculta");
     juegoDiv.classList.add("oculta");
 });
+
+function beep() {
+    var context = new AudioContext();
+    var oscillator = context.createOscillator();
+    
+    oscillator.type = "sine";
+    oscillator.frequency.value = Math.round(Math.random()*800+100);
+    oscillator.connect(context.destination);
+    
+    oscillator.start(); 
+
+    // Beep for 500 milliseconds
+    setTimeout(function () {
+        oscillator.stop();
+    }, 50);   
+}
