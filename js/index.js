@@ -27,11 +27,10 @@ btnIniciarJuego.addEventListener("click", function(){
 function draw() {
     context.fillStyle = 'rgb(200, 0, 0)';
     context.fillRect(canvasW/10, canvasH/10, canvasW/10, canvasH/10);
-    
 }
 
 function resizeCanvas() {
-    context.canvas.height = document.documentElement.clientHeight * 0.5;
+    context.canvas.height = document.documentElement.clientHeight * 0.6;
     context.canvas.width = document.documentElement.clientWidth * 0.5;
     canvasH = context.canvas.height;
     canvasW = context.canvas.width;
