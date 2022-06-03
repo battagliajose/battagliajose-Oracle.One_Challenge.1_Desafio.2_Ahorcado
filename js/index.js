@@ -9,22 +9,42 @@ var mainDiv = document.querySelector("#mainDiv");
 var agregarPalabraDiv = document.querySelector("#agregarPalabraDiv");
 var juegoDiv = document.querySelector("#juegoDiv");
 
-var canvas = document.querySelector("#canvas");
-var pincel = canvas.getContext("2d");
-var canvasW = canvas.scrollWidth;
-var canvasH = canvas.scrollHeight;
+/*Canvas*/
+var context = document.querySelector("#canvas").getContext("2d");
+var canvasH;
+var canvasW;
+
+/*Canvas responsive*/
+window.addEventListener("resize", resizeCanvas); 
 
 btnIniciarJuego.addEventListener("click", function(){
     mainDiv.classList.add("oculta");
     juegoDiv.classList.remove("oculta");
-    
-    pincel.fillStyle = 'rgb(200, 0, 0)';
-    pincel.fillRect(10, 10, 50, 50);
-    pincel.fillRect(10, 10, 50, 50);
-    pincel.fillRect(20, 20, 50, 50);
-
-    alert(canvasW + " - " + canvasH);
+    resizeCanvas();
+    draw();
 });
+
+function draw() {
+    context.fillStyle = 'rgb(200, 0, 0)';
+    context.fillRect(10, 10, 50, 50);
+    context.fillRect(10, 10, 50, 50);
+    context.fillRect(20, 20, 50, 50);
+}
+
+function resizeCanvas() {
+    context.canvas.height = document.documentElement.clientHeight * 0.5;
+    context.canvas.width = document.documentElement.clientWidth * 0.5;
+    canvasH = context.canvas.height;
+    canvasW = context.canvas.width;
+    draw();
+    logCanvasSize();
+}
+
+function logCanvasSize() {
+    var canvasW = context.canvas.width;
+    var canvasH = context.canvas.height;
+    console.log(canvasW + " - " + canvasH);
+}
 
 btnAgregarPalabra.addEventListener("click", function(){
     mainDiv.classList.add("oculta");
