@@ -146,6 +146,7 @@ footer {
     background-color: transparent;
     margin: 1.3vw;
     outline: none;
+    resize: none;
 }
 
 #mensajeMax8Letras {
