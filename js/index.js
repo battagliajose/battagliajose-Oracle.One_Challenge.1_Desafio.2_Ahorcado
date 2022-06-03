@@ -26,9 +26,8 @@ btnIniciarJuego.addEventListener("click", function(){
 
 function draw() {
     context.fillStyle = 'rgb(200, 0, 0)';
-    context.fillRect(10, 10, 50, 50);
-    context.fillRect(10, 10, 50, 50);
-    context.fillRect(20, 20, 50, 50);
+    context.fillRect(canvasW/10, canvasH/10, canvasW/10, canvasH/10);
+    
 }
 
 function resizeCanvas() {
