@@ -1,11 +1,13 @@
+/*Botones*/
 var btnIniciarJuego = document.querySelector("#btnIniciarJuego");
 var btnAgregarPalabra = document.querySelector("#btnAgregarPalabra");
+var btnCancelarPalabra = document.querySelector("#btnCancelarPalabra");
+var btnDesistir = document.querySelector("#btnDesistir");
 
+/*DIVS*/
 var mainDiv = document.querySelector("#mainDiv");
 var agregarPalabraDiv = document.querySelector("#agregarPalabraDiv");
 var juegoDiv = document.querySelector("#juegoDiv");
-
-var btnCancelarPalabra = document.querySelector("#btnCancelarPalabra");
 
 var canvas = document.querySelector("#canvas");
 var pincel = canvas.getContext("2d");
@@ -32,4 +34,9 @@ btnAgregarPalabra.addEventListener("click", function(){
 btnCancelarPalabra.addEventListener("click", function(){
     mainDiv.classList.remove("oculta");
     agregarPalabraDiv.classList.add("oculta");
+});
+
+btnDesistir.addEventListener("click", function(){
+    mainDiv.classList.remove("oculta");
+    juegoDiv.classList.add("oculta");
 });
