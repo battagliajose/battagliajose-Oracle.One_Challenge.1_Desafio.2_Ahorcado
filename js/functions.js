@@ -7,10 +7,14 @@ var startPosY = canvasH * 0.65;
 var palabra;
 var vidasUsadas = 0;
 
+
+
 function iniciarJuego(){
+    vidasUsadas = 0;
     palabra = getPalabra();
     resizeCanvas();
     draw();
+    vidasUsadas = 0;
 }
 
 function draw() {
@@ -69,9 +73,20 @@ function dibujarHorca() {
 function dibujarAhorcado(etapa) {
     switch (etapa) {
         case 1: //Cabeza.
+            //Ver cara que vaya cambiando a medida que se pierden vidas?
             context.beginPath();
             context.arc(startPosX + canvasW * 0.25, startPosY - canvasH * 0.27, canvasH * 0.025, 0, 2 * Math.PI);
             context.stroke();
+            context.beginPath();
+            context.arc(startPosX + canvasW * 0.25, startPosY - canvasH * 0.27, canvasH * 0.015, 0, 1 * Math.PI);
+            context.stroke();
+            context.beginPath();
+            context.arc(startPosX + canvasW * 0.24, startPosY - canvasH * 0.28, canvasH * 0.0015, 0, 1 * Math.PI);
+            context.stroke();
+            context.beginPath();
+            context.arc(startPosX + canvasW * 0.26, startPosY - canvasH * 0.28, canvasH * 0.0015, 0, 1 * Math.PI);
+            context.stroke();
+
             break;
         case 2: //Cuerpo
             drawLine(startPosX + canvasW * 0.25, startPosY - canvasH * 0.24, startPosX + canvasW * 0.25, startPosY - canvasH * 0.14);
@@ -116,7 +131,8 @@ function logCanvasSize() {
 
 function getPalabra(){
     var palabras = ["PANCHO","MANZANA","PAJARO","AVION","PLATO", "CAMARA", "ARBOL", "SILLA", "LIBRO", "BANANA"]
-    
-    return palabras[rnd(0, palabras.length)];
+    var palabra = palabras[rnd(0, palabras.length - 1)];
+    console.log(palabra);
+    return palabra;
 }
 
