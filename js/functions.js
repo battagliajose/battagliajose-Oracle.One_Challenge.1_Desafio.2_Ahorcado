@@ -1,5 +1,10 @@
 var canvasH;
 var canvasW;
+
+
+var startPosX = canvasW * 0.33;
+var startPosY = canvasH * 0.65;
+
 var palabra;
 
 function iniciarJuego(){
@@ -9,8 +14,14 @@ function iniciarJuego(){
 }
 
 function draw() {
+
+
     dibujarGuiones(palabra);
     dibujarHorca();
+    
+    for(i = 1; i <= 6; i++) {
+        dibujarAhorcado(i);
+    }
 }
 
 function dibujarGuiones(palabra) {
@@ -37,9 +48,9 @@ function dibujarGuiones(palabra) {
 
 function dibujarHorca() {
     context.fillStyle = "rgb(120,060,000)";
-
-    let startPosX = canvasW * 0.33;
-    let startPosY = canvasH * 0.65;
+    
+    startPosX = canvasW * 0.33;
+    startPosY = canvasH * 0.65;
 
     context.strokeStyle = "#0A3871";
     
@@ -50,21 +61,56 @@ function dibujarHorca() {
 
     drawLine(startPosX, startPosY, startPosX + canvasW * 0.33, startPosY); //Base
 
-    /*drawLine(startPosX + canvasW * 0.10, startPosY, startPosX + canvasW * 0.10, startPosY - canvasH * 0.4); //Poste
-    drawLine(startPosX + canvasW * 0.10, startPosY - canvasH * 0.4, startPosX + canvasW * 0.25, startPosY - canvasH * 0.4) //Travesaño
-    drawLine(startPosX + canvasW * 0.25, startPosY - canvasH * 0.4, startPosX + canvasW * 0.25, startPosY - canvasH * 0.3)*/
-
     context.beginPath();
     context.moveTo(startPosX + canvasW * 0.10, startPosY);
-    context.lineTo(startPosX + canvasW * 0.10, startPosY - canvasH * 0.4);
-    context.lineTo(startPosX + canvasW * 0.25, startPosY - canvasH * 0.4);
-    context.lineTo(startPosX + canvasW * 0.25, startPosY - canvasH * 0.3);
+    context.lineTo(startPosX + canvasW * 0.10, startPosY - canvasH * 0.4); // Poste.
+    context.lineTo(startPosX + canvasW * 0.25, startPosY - canvasH * 0.4); // Travesaño.
+    context.lineTo(startPosX + canvasW * 0.25, startPosY - canvasH * 0.3); // Soga.
     context.stroke();
+}
+
+function dibujarAhorcado(etapa) {
+    switch (etapa) {
+        case 1: //Cabeza.
+            context.beginPath();
+            context.arc(startPosX + canvasW * 0.25, startPosY - canvasH * 0.27, canvasH * 0.025, 0, 2 * Math.PI);
+            context.stroke();
+            break;
+        case 2: //Cuerpo
+            context.beginPath();
+            context.moveTo(startPosX + canvasW * 0.25, startPosY - canvasH * 0.24);
+            context.lineTo(startPosX + canvasW * 0.25, startPosY - canvasH * 0.14);
+            context.stroke();
+            break;
+        case 3: //Brazo Der.
+            context.beginPath();
+            context.moveTo(startPosX + canvasW * 0.25, startPosY - canvasH * 0.22);
+            context.lineTo(startPosX + canvasW * 0.21, startPosY - canvasH * 0.15);
+            context.stroke();
+            break;
+        case 4: //Brazo Izq.
+            context.beginPath();
+            context.moveTo(startPosX + canvasW * 0.25, startPosY - canvasH * 0.22);
+            context.lineTo(startPosX + canvasW * 0.29, startPosY - canvasH * 0.15);
+            context.stroke();
+            break;
+        case 5: //Pierna Der.
+            context.beginPath();
+            context.moveTo(startPosX + canvasW * 0.25, startPosY - canvasH * 0.14);
+            context.lineTo(startPosX + canvasW * 0.21, startPosY - canvasH * 0.05);
+            context.stroke();
+            break;
+        case 6: //Pierna Izq.
+            context.beginPath();
+            context.moveTo(startPosX + canvasW * 0.25, startPosY - canvasH * 0.14);
+            context.lineTo(startPosX + canvasW * 0.29, startPosY - canvasH * 0.05);
+            context.stroke();
+            break;
+    }
 }
 
 function drawLine(sPosX, sPosY, ePosX, ePosY) {
     context.beginPath();
-    
     context.moveTo(sPosX, sPosY);
     context.lineTo(ePosX, ePosY);
     context.stroke();
@@ -75,6 +121,7 @@ function resizeCanvas() {
     context.canvas.width = document.documentElement.clientWidth * 0.5;
     canvasH = context.canvas.height;
     canvasW = context.canvas.width;
+
     draw();
     logCanvasSize();
 }
