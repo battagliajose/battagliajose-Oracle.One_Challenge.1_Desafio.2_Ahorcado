@@ -1,11 +1,11 @@
 var canvasH;
 var canvasW;
 
-
 var startPosX = canvasW * 0.33;
 var startPosY = canvasH * 0.65;
 
 var palabra;
+var vidasUsadas = 0;
 
 function iniciarJuego(){
     palabra = getPalabra();
@@ -14,12 +14,10 @@ function iniciarJuego(){
 }
 
 function draw() {
-
-
     dibujarGuiones(palabra);
     dibujarHorca();
     
-    for(i = 1; i <= 6; i++) {
+    for (i = 1; i <= vidasUsadas; i++) {
         dibujarAhorcado(i);
     }
 }
@@ -70,43 +68,33 @@ function dibujarHorca() {
 }
 
 function dibujarAhorcado(etapa) {
+    context.beginPath();
     switch (etapa) {
         case 1: //Cabeza.
-            context.beginPath();
             context.arc(startPosX + canvasW * 0.25, startPosY - canvasH * 0.27, canvasH * 0.025, 0, 2 * Math.PI);
-            context.stroke();
             break;
         case 2: //Cuerpo
-            context.beginPath();
             context.moveTo(startPosX + canvasW * 0.25, startPosY - canvasH * 0.24);
             context.lineTo(startPosX + canvasW * 0.25, startPosY - canvasH * 0.14);
-            context.stroke();
             break;
         case 3: //Brazo Der.
-            context.beginPath();
             context.moveTo(startPosX + canvasW * 0.25, startPosY - canvasH * 0.22);
             context.lineTo(startPosX + canvasW * 0.21, startPosY - canvasH * 0.15);
-            context.stroke();
             break;
         case 4: //Brazo Izq.
-            context.beginPath();
             context.moveTo(startPosX + canvasW * 0.25, startPosY - canvasH * 0.22);
             context.lineTo(startPosX + canvasW * 0.29, startPosY - canvasH * 0.15);
-            context.stroke();
             break;
         case 5: //Pierna Der.
-            context.beginPath();
             context.moveTo(startPosX + canvasW * 0.25, startPosY - canvasH * 0.14);
             context.lineTo(startPosX + canvasW * 0.21, startPosY - canvasH * 0.05);
-            context.stroke();
             break;
         case 6: //Pierna Izq.
-            context.beginPath();
             context.moveTo(startPosX + canvasW * 0.25, startPosY - canvasH * 0.14);
             context.lineTo(startPosX + canvasW * 0.29, startPosY - canvasH * 0.05);
-            context.stroke();
             break;
     }
+    context.stroke();
 }
 
 function drawLine(sPosX, sPosY, ePosX, ePosY) {
