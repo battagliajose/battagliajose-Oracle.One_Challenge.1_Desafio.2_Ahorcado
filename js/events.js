@@ -22,9 +22,7 @@ txtNuevaPalabra.addEventListener("input", function(){
 btnIniciarJuego.addEventListener("click", function(){
     mainDiv.classList.add("oculta");
     juegoDiv.classList.remove("oculta");
-    palabra = getPalabra();
-    resizeCanvas();
-    draw();
+    iniciarJuego();
 });
 
 /*Canvas responsive*/

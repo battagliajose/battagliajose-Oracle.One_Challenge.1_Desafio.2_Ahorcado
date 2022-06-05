@@ -2,6 +2,12 @@ var canvasH;
 var canvasW;
 var palabra;
 
+function iniciarJuego(){
+    palabra = getPalabra();
+    resizeCanvas();
+    draw();
+}
+
 function draw() {
     context.fillStyle = 'rgb(200, 0, 0)';
     context.fillRect(canvasW/10, canvasH/10, canvasW/10, canvasH/10);
@@ -25,10 +31,9 @@ function dibujarGuiones(palabra) {
 
     for (i = 0; i < cantidadGuiones; i++) {
         context.moveTo( i * guionWidth, posY);
-        context.lineTo( (i+1) * guionWidth -10, posY);
+        context.lineTo( (i+1) * guionWidth - 10, posY);
         context.stroke();
     }
-
 }
 
 function resizeCanvas() {
