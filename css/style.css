@@ -10,9 +10,9 @@ body {
 	height: 100vh;
 }
 
-canvas {
-    /*border: 1px black solid;*/
-}
+/*canvas {
+    border: 1px black solid;
+}*/
 
 @keyframes gradient {
 	0% {
@@ -168,19 +168,19 @@ footer {
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #0A3871;
     opacity: 1; /* Firefox */
-  }
-  
-  :-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: #0A3871;
-  }
-  
-  ::-ms-input-placeholder { /* Microsoft Edge */
-    color: #0A3871;
-  }
+}
 
-  .inlineClass {
-      display: inline;
-  }
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+color: #0A3871;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+color: #0A3871;
+}
+
+.inlineClass {
+    display: inline;
+}
 
 /*Vista de Juego*/
 
