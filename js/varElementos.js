@@ -3,6 +3,7 @@ var btnIniciarJuego = document.querySelector("#btnIniciarJuego");
 var btnAgregarPalabra = document.querySelector("#btnAgregarPalabra");
 var btnCancelarPalabra = document.querySelector("#btnCancelarPalabra");
 var btnDesistir = document.querySelector("#btnDesistir");
+var btnNuevoJuego = document.querySelector("#btnNuevoJuego");
 
 /*DIVS*/
 var mainDiv = document.querySelector("#mainDiv");

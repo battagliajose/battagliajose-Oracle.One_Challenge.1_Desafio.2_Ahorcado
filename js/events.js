@@ -10,6 +10,10 @@ btnCancelarPalabra.addEventListener("click", function(){
     txtNuevaPalabra.value = "";
 });
 
+btnNuevoJuego.addEventListener("click", function(){
+    iniciarJuego();
+})
+
 btnDesistir.addEventListener("click", function(){
     mainDiv.classList.remove("oculta");
     juegoDiv.classList.add("oculta");
