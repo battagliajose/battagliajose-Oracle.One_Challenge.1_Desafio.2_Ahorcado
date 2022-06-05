@@ -27,3 +27,11 @@ btnIniciarJuego.addEventListener("click", function(){
 
 /*Canvas responsive*/
 window.addEventListener("resize", resizeCanvas); 
+
+document.addEventListener("keypress", function (event){
+    console.log("keypress detected! - " + event.key);
+    context.font = "30px Arial";
+    context.fillText(event.key, rnd(0,1000), rnd(0,1000));
+    vidasUsadas++;
+    dibujarAhorcado(vidasUsadas) 
+});
