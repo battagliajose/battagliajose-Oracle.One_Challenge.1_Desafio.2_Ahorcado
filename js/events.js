@@ -18,7 +18,7 @@ btnGuardarPalabra.addEventListener("click", function(){
 btnCancelarPalabra.addEventListener("click", function(){
     mainDiv.classList.remove("oculta");
     agregarPalabraDiv.classList.add("oculta");
-    console.log(txtNuevaPalabra.value);
+    debug(txtNuevaPalabra.value);
     txtNuevaPalabra.value = "";
 });
 

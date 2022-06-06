@@ -22,6 +22,6 @@ function beep() {
 
 function debug(datos) {
     if (debugFlag) {
-        console.log(datos);
+        debug(datos);
     }
 }

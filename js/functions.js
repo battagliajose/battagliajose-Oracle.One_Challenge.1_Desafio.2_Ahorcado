@@ -5,7 +5,7 @@ var canvasW;
 
 var keyProcessingFlag = false; //Bandera para procesar pulsaciones de teclado solo en la vista de juego.
 
-var debugFlag = true;
+var debugFlag = false;
 
 // Usado en el dibujado de la Horca y del Ahorcado
 var startPosX = canvasW * 0.33;
@@ -65,7 +65,7 @@ function dibujarGuiones(palabra) {
 
     for (i = 0; i < cantidadGuiones; i++) {
         posGuiones.push(posX + i * guionWidth); //Guarda la posición para ubicar las letras.
-        console.log("posicion guiones: " + posGuiones[i])
+        debug("posicion guiones: " + posGuiones[i])
         context.moveTo(posX + i * guionWidth, posY);
         context.lineTo(posX + (i+1) * guionWidth - 10, posY);
         context.stroke();
@@ -152,13 +152,13 @@ function resizeCanvas() {
 function logCanvasSize() {
     var canvasW = context.canvas.width;
     var canvasH = context.canvas.height;
-    console.log(canvasW + " - " + canvasH);
+    debug(canvasW + " - " + canvasH);
 }
 
 function getPalabra(){
     
     var palabra = palabras[rnd(0, palabras.length - 1)];
-    console.log(palabra);
+    debug(palabra);
     return palabra;
 }
 
@@ -182,7 +182,7 @@ function procesarTecla(event){
 }
 
 function verificarLetra(letra) {
-    console.log("Palabra: " + palabra + " letra:" + letra);
+    debug("Palabra: " + palabra + " letra:" + letra);
     if(palabra.includes(letra) && !letrasCorrectas.find(element => element == letra)) {
         letrasCorrectas.push(letra);
         dibujarLetraCorrecta(letra);
