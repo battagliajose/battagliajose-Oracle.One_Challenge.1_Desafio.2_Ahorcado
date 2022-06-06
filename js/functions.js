@@ -9,12 +9,15 @@ var palabra;
 var vidasUsadas = 0;
 
 var posGuiones = [];
+var letrasCorrectas = []
+var letrasIncorrectas = []
 
 function iniciarJuego(){
+    letrasCorrectas = []
+    letrasIncorrectas = []
     vidasUsadas = 0;
     palabra = getPalabra();
     resizeCanvas();
-    draw();
     vidasUsadas = 0;
 }
 
@@ -24,6 +27,10 @@ function draw() {
     
     for (i = 1; i <= vidasUsadas; i++) {
         dibujarAhorcado(i);
+    }
+
+    for (i = 0; i < letrasCorrectas.length; i++) {
+        dibujarLetraCorrecta(letrasCorrectas[i]);
     }
 }
 
@@ -122,6 +129,8 @@ function resizeCanvas() {
     canvasH = context.canvas.height;
     canvasW = context.canvas.width;
 
+    posGuiones = [];
+
     draw();
     logCanvasSize();
 }
@@ -153,9 +162,11 @@ function procesarTecla(event){
 function verificarLetra(letra) {
     console.log("Palabra: " + palabra + " letra:" + letra);
     if(palabra.includes(letra)) {
+        letrasCorrectas.push(letra);
         dibujarLetraCorrecta(letra);
         console.log("Palabra: " + palabra + " letra:" + letra);
     } else {
+        letrasIncorrectas.push(letra);
         dibujarLetraIncorrecta(letra);
         vidasUsadas++;
         dibujarAhorcado(vidasUsadas);
@@ -164,7 +175,7 @@ function verificarLetra(letra) {
 
 function dibujarLetraCorrecta(letra) {
     context.fillStyle = "#0A3871";
-    var fontSize = canvasH * 0.09;
+    var fontSize = canvasW * 0.08;
     context.font = fontSize + "px Arial";
 
     var posicion = 0;
@@ -172,10 +183,9 @@ function dibujarLetraCorrecta(letra) {
     posicion = palabra.indexOf(letra, posicion);
 
     while(posicion > -1) {
-        context.fillText(letra, posGuiones[posicion], canvasH * 0.87);
+        context.fillText(letra, posGuiones[posicion] + canvasW * 0.01, canvasH * 0.87);
         console.log(posicion + " - P: " + posicion);
         posicion = palabra.indexOf(letra, posicion + 1);
-        //break;
     }
 }
 
