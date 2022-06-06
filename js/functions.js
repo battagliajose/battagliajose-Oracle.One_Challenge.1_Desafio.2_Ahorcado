@@ -1,13 +1,14 @@
 var canvasH;
 var canvasW;
 
+// Usado en el dibujado de la Horca y del Ahorcado
 var startPosX = canvasW * 0.33;
 var startPosY = canvasH * 0.65;
 
 var palabra;
 var vidasUsadas = 0;
 
-
+var posGuiones = [];
 
 function iniciarJuego(){
     vidasUsadas = 0;
@@ -36,14 +37,16 @@ function dibujarGuiones(palabra) {
     let posY = canvasH * 0.9;
 
     //Seteos para que los guiones ocupen medio canvas centrado.
-    let startPosX = canvasW / 4;
+    let posX = canvasW / 4;
     let guionWidth = (canvasW / 2) / cantidadGuiones;
 
     context.lineWidth = canvasH * 0.003;
 
     for (i = 0; i < cantidadGuiones; i++) {
-        context.moveTo( startPosX + i * guionWidth, posY);
-        context.lineTo( startPosX + (i+1) * guionWidth - 10, posY);
+        posGuiones.push(posX + i * guionWidth); //Guarda la posición para ubicar las letras.
+        console.log("posicion guiones: " + posGuiones[i])
+        context.moveTo(posX + i * guionWidth, posY);
+        context.lineTo(posX + (i+1) * guionWidth - 10, posY);
         context.stroke();
     }
 }
@@ -136,3 +139,48 @@ function getPalabra(){
     return palabra;
 }
 
+function procesarTecla(event){
+    console.log("Tecla Presionada! - Key: " + event.key + " KeyCode: " + event.keyCode);
+
+    //Verifica si es un caracter alfabetico en mayúsculas o minúsculas.
+    if(event.keyCode >= 65 && event.keyCode <= 90 | event.keyCode >=97 && event.keyCode <= 122) {
+        verificarLetra(event.key.toUpperCase());
+    } else {
+        beep();
+    }
+}
+
+function verificarLetra(letra) {
+    console.log("Palabra: " + palabra + " letra:" + letra);
+    if(palabra.includes(letra)) {
+        dibujarLetraCorrecta(letra);
+        console.log("Palabra: " + palabra + " letra:" + letra);
+    } else {
+        dibujarLetraIncorrecta(letra);
+        vidasUsadas++;
+        dibujarAhorcado(vidasUsadas);
+    }
+}
+
+function dibujarLetraCorrecta(letra) {
+    context.fillStyle = "#0A3871";
+    var fontSize = canvasH * 0.09;
+    context.font = fontSize + "px Arial";
+
+    var posicion = 0;
+    
+    posicion = palabra.indexOf(letra, posicion);
+
+    while(posicion > -1) {
+        context.fillText(letra, posGuiones[posicion], canvasH * 0.87);
+        console.log(posicion + " - P: " + posicion);
+        posicion = palabra.indexOf(letra, posicion + 1);
+        //break;
+    }
+}
+
+function dibujarLetraIncorrecta(letra) {
+    context.fillStyle = "rgb(255, 0, 0 )";
+    context.font = "30px Arial";
+    context.fillText(letra, 200, 200);
+}
