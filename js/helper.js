@@ -19,3 +19,9 @@ function beep() {
         oscillator.stop();
     }, 50);   
 }
+
+function debug(datos) {
+    if (debugFlag) {
+        console.log(datos);
+    }
+}
