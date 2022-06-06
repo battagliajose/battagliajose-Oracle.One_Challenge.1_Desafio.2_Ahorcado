@@ -32,6 +32,8 @@ function draw() {
     for (i = 0; i < letrasCorrectas.length; i++) {
         dibujarLetraCorrecta(letrasCorrectas[i]);
     }
+
+    dibujarLetrasIncorrectas();
 }
 
 function dibujarGuiones(palabra) {
@@ -166,8 +168,10 @@ function verificarLetra(letra) {
         dibujarLetraCorrecta(letra);
         console.log("Palabra: " + palabra + " letra:" + letra);
     } else {
-        letrasIncorrectas.push(letra);
-        dibujarLetraIncorrecta(letra);
+        if(!letrasIncorrectas.find(element => element == letra)) {
+            letrasIncorrectas.push(letra);
+        }
+        dibujarLetrasIncorrectas();
         vidasUsadas++;
         dibujarAhorcado(vidasUsadas);
     }
@@ -183,14 +187,16 @@ function dibujarLetraCorrecta(letra) {
     posicion = palabra.indexOf(letra, posicion);
 
     while(posicion > -1) {
-        context.fillText(letra, posGuiones[posicion] + canvasW * 0.01, canvasH * 0.87);
+        context.fillText(letra, posGuiones[posicion], canvasH * 0.87);
         console.log(posicion + " - P: " + posicion);
         posicion = palabra.indexOf(letra, posicion + 1);
     }
 }
 
-function dibujarLetraIncorrecta(letra) {
+function dibujarLetrasIncorrectas() {
     context.fillStyle = "rgb(255, 0, 0 )";
-    context.font = "30px Arial";
-    context.fillText(letra, 200, 200);
+    var fontSize = canvasW * 0.04;
+    context.font = fontSize + "px Arial";
+
+    context.fillText(letrasIncorrectas, canvasW * 0.20, canvasH * 0.97);
 }
