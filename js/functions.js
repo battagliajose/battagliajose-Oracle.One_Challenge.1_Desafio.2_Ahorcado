@@ -1,4 +1,4 @@
-var palabras = ["PANCHO","MANZANA","PAJARO","AVION","PLATO", "CAMARA", "ARBOL", "SILLA", "LIBRO", "BANANA"]
+var palabras = ["PANCHO","MANZANA","PAJARO","AVION","PLATO", "CAMARA", "ARBOL", "SILLA", "LIBRO", "BANANA", "PARRILLA", "BYTECODE", "BINARIO", "FUNCION", "VARIABLE", "ENTERO", "DOBLE", "ARREGLO"]
 
 var canvasH;
 var canvasW;
