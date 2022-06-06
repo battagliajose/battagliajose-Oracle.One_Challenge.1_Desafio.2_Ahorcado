@@ -1,5 +1,11 @@
+var palabras = ["PANCHO","MANZANA","PAJARO","AVION","PLATO", "CAMARA", "ARBOL", "SILLA", "LIBRO", "BANANA"]
+
 var canvasH;
 var canvasW;
+
+var keyProcessingFlag = false; //Bandera para procesar pulsaciones de teclado solo en la vista de juego.
+
+var debugFlag = true;
 
 // Usado en el dibujado de la Horca y del Ahorcado
 var startPosX = canvasW * 0.33;
@@ -12,13 +18,19 @@ var posGuiones = [];
 var letrasCorrectas = []
 var letrasIncorrectas = []
 
+var cantLetrasCorrectas;
+
 function iniciarJuego(){
+
     letrasCorrectas = []
     letrasIncorrectas = []
     vidasUsadas = 0;
+    vidasUsadas = 0;
+    keyProcessingFlag = true;
+    cantLetrasCorrectas = 0;
+
     palabra = getPalabra();
     resizeCanvas();
-    vidasUsadas = 0;
 }
 
 function draw() {
@@ -144,14 +156,22 @@ function logCanvasSize() {
 }
 
 function getPalabra(){
-    var palabras = ["PANCHO","MANZANA","PAJARO","AVION","PLATO", "CAMARA", "ARBOL", "SILLA", "LIBRO", "BANANA"]
+    
     var palabra = palabras[rnd(0, palabras.length - 1)];
     console.log(palabra);
     return palabra;
 }
 
+function guardarNuevaPalabraYEmpezarJuego() {
+    if (txtNuevaPalabra.value != "") {
+        palabras.push(txtNuevaPalabra.value.toUpperCase());
+        txtNuevaPalabra.value = "";
+        iniciarJuego();
+    }
+}
+
 function procesarTecla(event){
-    console.log("Tecla Presionada! - Key: " + event.key + " KeyCode: " + event.keyCode);
+    debug("Tecla Presionada! - Key: " + event.key + " KeyCode: " + event.keyCode);
 
     //Verifica si es un caracter alfabetico en mayúsculas o minúsculas.
     if(event.keyCode >= 65 && event.keyCode <= 90 | event.keyCode >=97 && event.keyCode <= 122) {
@@ -163,18 +183,48 @@ function procesarTecla(event){
 
 function verificarLetra(letra) {
     console.log("Palabra: " + palabra + " letra:" + letra);
-    if(palabra.includes(letra)) {
+    if(palabra.includes(letra) && !letrasCorrectas.find(element => element == letra)) {
         letrasCorrectas.push(letra);
         dibujarLetraCorrecta(letra);
-        console.log("Palabra: " + palabra + " letra:" + letra);
+        debug("Palabra: " + palabra + " letra:" + letra);
     } else {
-        if(!letrasIncorrectas.find(element => element == letra)) {
+        if(!letrasIncorrectas.find(element => element == letra) && !palabra.includes(letra)) {
             letrasIncorrectas.push(letra);
+            dibujarLetrasIncorrectas();
+            vidasUsadas++;
+            dibujarAhorcado(vidasUsadas);
         }
-        dibujarLetrasIncorrectas();
-        vidasUsadas++;
-        dibujarAhorcado(vidasUsadas);
     }
+
+    if (vidasUsadas >= 6) {
+        gameOver();
+    }
+
+    if (cantLetrasCorrectas == palabra.length) {
+        juegoGanado()
+    }
+}
+
+function gameOver() {
+    keyProcessingFlag = false;
+    debug("Game Over!");
+
+    context.fillStyle = "rgb(255, 0, 0 )";
+    var fontSize = canvasW * 0.08;
+    context.font = fontSize + "px Arial";
+
+    context.fillText("Has Perdido!", canvasW * 0.25, canvasH * 0.75);
+}
+
+function juegoGanado() {
+    keyProcessingFlag = false;
+    debug("Has ganado!");
+
+    context.fillStyle = "rgb(0, 200, 0 )";
+    var fontSize = canvasW * 0.08;
+    context.font = fontSize + "px Arial";
+
+    context.fillText("Has Ganado!", canvasW * 0.25, canvasH * 0.75);
 }
 
 function dibujarLetraCorrecta(letra) {
@@ -188,8 +238,9 @@ function dibujarLetraCorrecta(letra) {
 
     while(posicion > -1) {
         context.fillText(letra, posGuiones[posicion], canvasH * 0.87);
-        console.log(posicion + " - P: " + posicion);
+        debug(posicion + " - P: " + posicion);
         posicion = palabra.indexOf(letra, posicion + 1);
+        cantLetrasCorrectas++;
     }
 }
 
